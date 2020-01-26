@@ -1,27 +1,25 @@
 {
-    "name": "YunoHost example app",
-    "id": "ynhexample",
+    "name": "Youtube-dl Web UI",
+    "id": "youtube-dl-webui",
     "packaging_format": 1,
     "description": {
-        "en": "Explain in *a few (10~15) words* the purpose of the app or what it actually does (it is meant to give a rough idea to users browsing a catalog of 100+ apps)",
-        "fr": "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce qu'elle fait (l'objectif est de donner une idée grossière pour des utilisateurs qui naviguent dans un catalogue de 100+ apps)"
+        "en": "Web interface for Youtube-dl",
+        "fr": "Interface web pour Youtube-dl"
     },
     "version": "1.0~ynh1",
-    "url": "https://example.com",
-    "license": "free",
+    "url": "https://github.com/d0u9/youtube-dl-webui",
+    "license": " GPL-2.0-only",
     "maintainer": {
-        "name": "John doe",
-        "email": "john.doe@example.com",
-        "url": "http://example.com"
+        "name": "Thomas Blarre",
+        "email": "thomas@blarre.net",
+        "url": "https://thomas.blarre.net"
     },
     "requirements": {
         "yunohost": ">= 3.5"
     },
-    "multi_instance": true,
+    "multi_instance": false,
     "services": [
-        "nginx",
-        "php7.0-fpm",
-        "mysql"
+        "nginx"
     ],
     "arguments": {
         "install" : [
@@ -29,8 +27,8 @@
                 "name": "domain",
                 "type": "domain",
                 "ask": {
-                    "en": "Choose a domain name for ynhexample",
-                    "fr": "Choisissez un nom de domaine pour ynhexample"
+                    "en": "Choose a domain name for Youtube-dl Web UI",
+                    "fr": "Choisissez un nom de domaine pour Youtube-dl Web UI"
                 },
                 "example": "example.com"
             },
@@ -38,20 +36,11 @@
                 "name": "path",
                 "type": "path",
                 "ask": {
-                    "en": "Choose a path for ynhexample",
-                    "fr": "Choisissez un chemin pour ynhexample"
+                    "en": "Choose a path for Youtube-dl Web UI",
+                    "fr": "Choisissez un chemin pour Youtube-dl Web UI"
                 },
-                "example": "/example",
-                "default": "/example"
-            },
-            {
-                "name": "admin",
-                "type": "user",
-                "ask": {
-                    "en": "Choose an admin user",
-                    "fr": "Choisissez l’administrateur"
-                },
-                "example": "johndoe"
+                "example": "/youtube-dl",
+                "default": "/youtube-dl"
             },
             {
                 "name": "is_public",
@@ -60,30 +49,16 @@
                     "en": "Is it a public application?",
                     "fr": "Est-ce une application publique ?"
                 },
-                "default": true
+                "default": false
             },
             {
-                "name": "language",
+                "name": "dl_dir",
                 "type": "string",
                 "ask": {
-                    "en": "Choose the application language",
-                    "fr": "Choisissez la langue de l'application"
+                    "en": "Choose a path on the server to save downloaded videos",
+                    "fr": "Choisissez un dossier sur le serveur où seront sauvegardées les vidéos"
                 },
-                "choices": ["fr", "en"],
-                "default": "fr"
-            },
-            {
-                "name": "password",
-                "type": "password",
-                "ask": {
-                    "en": "Set the administrator password",
-                    "fr": "Définissez le mot de passe administrateur"
-                },
-                "help": {
-                    "en": "Use the help field to add an information for the admin about this question.",
-                    "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
-                },
-                "example": "Choose a password"
+                "default": "/home/yunohost.multimedia/shared/Videos"
             }
         ]
     }

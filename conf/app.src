@@ -1,5 +1,5 @@
-SOURCE_URL=url of app's source
-SOURCE_SUM=sha256 checksum
+SOURCE_URL=https://github.com/d0u9/youtube-dl-webui/archive/0.2.2.tar.gz
+SOURCE_SUM=af86f49b9c6d5549559eddf6c1aa5c17212d8e9afe21d09f11cc104a048406de
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
