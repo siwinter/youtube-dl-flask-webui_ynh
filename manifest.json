@@ -52,13 +52,13 @@
                 "default": false
             },
             {
-                "name": "dl_dir",
-                "type": "string",
+                "name": "use_multimedia",
+                "type": "boolean",
                 "ask": {
-                    "en": "Choose a path on the server to save downloaded videos",
-                    "fr": "Choisissez un dossier sur le serveur où seront sauvegardées les vidéos"
+                    "en": "Make downloaded videos available in Yunohost shared multimedia folder? (If not, videos will only be available in the yunohost.app folder)",
+                    "fr": "Exposer les vidéos dans le dossier multimedia partagé de Yunohost ? (Si non, les vidéos ne seront accessibles que dans le dossier yunohost.app)"
                 },
-                "default": "/home/yunohost.multimedia/shared/Videos"
+                "default": true
             }
         ]
     }
