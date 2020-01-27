@@ -215,7 +215,7 @@ ynh_store_file_checksum --file="$final_path/config.json"
 # Set permissions to app files
 chown -R root: $final_path
 mkdir $final_path/db
-chown -R $app:$final_path/db
+chown -R $app: $final_path/db
 
 #=================================================
 # SETUP LOGROTATE
