@@ -145,7 +145,7 @@ ynh_system_user_create --username=$app
 # SPECIFIC SETUP
 #=================================================
 
-virtualenv --python=python3.6 "${final_path}/venv"
+virtualenv --python=python3 "${final_path}/venv"
 (
 	set +o nounset
 	source "${final_path}/venv/bin/activate"

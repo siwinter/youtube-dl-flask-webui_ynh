@@ -9,6 +9,6 @@
         "port": __PORT__
     },
     "youtube_dl": {
-        "format": "bestaudio/best",
+        "format": "bestaudio/best"
     }
 }
