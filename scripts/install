@@ -146,6 +146,10 @@ ynh_system_user_create --username=$app
 #=================================================
 
 # Install the application
+
+sed '11i from werkzeug.contrib.fixers import ProxyFix' ${final_path}/youtube_dl_webui/server.py
+sed '16i app.wsgi_app = ProxyFix(app.wsgi_app)' ${final_path}/youtube_dl_webui/server.py
+
 virtualenv --python=python3 "${final_path}/venv"
 (
 	set +o nounset
