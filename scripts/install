@@ -149,7 +149,7 @@ ynh_system_user_create --username=$app
 
 sed -i '11i from werkzeug.contrib.fixers import ProxyFix' ${final_path}/youtube_dl_webui/server.py
 sed -i '16i app.wsgi_app = ProxyFix(app.wsgi_app)' ${final_path}/youtube_dl_webui/server.py
-ynh_replace_string --match_string="route('/" --replace_string="route('/$app/" --target_file="$final_path/youtube_dl_webui/server.py"
+ynh_replace_string --match_string="route('/" --replace_string="route('/$path_url/" --target_file="$final_path/youtube_dl_webui/server.py"
 
 virtualenv --python=python3 "${final_path}/venv"
 (
