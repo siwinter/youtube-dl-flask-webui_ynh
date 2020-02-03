@@ -146,10 +146,9 @@ ynh_system_user_create --username=$app
 #=================================================
 
 # Install the application
-
-sed -i '11i from werkzeug.contrib.fixers import ProxyFix' ${final_path}/youtube_dl_webui/server.py
-sed -i '16i app.wsgi_app = ProxyFix(app.wsgi_app)' ${final_path}/youtube_dl_webui/server.py
-sed -i "17i app.config[\"APPLICATION_ROOT\"] = \"${path_url}\"" ${final_path}/youtube_dl_webui/server.py
+cp ../conf/ynh_utils.py "$final_path/youtube_dl_webui/ynh_utils.py"
+sed -i '11i from .ynh_utils import PrefixMiddleware' ${final_path}/youtube_dl_webui/server.py
+sed -i "16i app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='${path_url}')" ${final_path}/youtube_dl_webui/server.py
 
 virtualenv --python=python3 "${final_path}/venv"
 (
