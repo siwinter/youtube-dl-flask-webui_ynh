@@ -146,9 +146,9 @@ ynh_system_user_create --username=$app
 #=================================================
 
 # Install the application
-cp ../conf/ynh_utils.py "$final_path/youtube_dl_webui/ynh_utils.py"
-sed -i '11i from .ynh_utils import PrefixMiddleware' ${final_path}/youtube_dl_webui/server.py
-sed -i "16i app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='${path_url}')" ${final_path}/youtube_dl_webui/server.py
+sed -i '11i from flask_reverse_proxy_fix.middleware import ReverseProxyPrefixFix' ${final_path}/youtube_dl_webui/server.py
+sed -i "16i app.config['REVERSE_PROXY_PATH'] = '${path_url}'" ${final_path}/youtube_dl_webui/server.py
+sed -i "17i ReverseProxyPrefixFix(app)" ${final_path}/youtube_dl_webui/server.py
 
 virtualenv --python=python3 "${final_path}/venv"
 (
@@ -159,6 +159,7 @@ virtualenv --python=python3 "${final_path}/venv"
 	pip install --upgrade pip
 	pip install --upgrade youtube-dl
 	pip install -U flask
+	pip install flask-reverse-proxy-fix
 	cd ${final_path}
 	python setup.py install
 )
