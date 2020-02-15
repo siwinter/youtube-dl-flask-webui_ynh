@@ -161,7 +161,8 @@ virtualenv --python=python3 "${final_path}/venv"
 	pip install --upgrade pip
 	pip install --upgrade youtube-dl
 	pip install -U flask
-	pip install flask-reverse-proxy-fix
+#	pip install flask-reverse-proxy-fix
+	pip install git+https://github.com/rachmadaniHaryono/flask-reverse-proxy-fix.git@feature/fix-import
 	cd ${final_path}
 	python setup.py install
 )
