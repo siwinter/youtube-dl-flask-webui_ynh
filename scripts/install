@@ -180,7 +180,7 @@ then
 	ynh_multimedia_build_main_dir
 	
 	# Add the videos folder to the shared multimedia
-	ynh_multimedia_addfolder -s "/home/yunohost.app/$app/youtube-dl-videos" -d "share/Video"
+	ynh_multimedia_addfolder -s "/home/yunohost.app/$app/youtube-dl-videos" -d "share/Video/youtube-dl-videos"
 fi
 
 #=================================================
