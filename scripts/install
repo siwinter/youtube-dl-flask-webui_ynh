@@ -146,8 +146,8 @@ ynh_system_user_create --username=$app
 #=================================================
 
 # Install the application
-cp ../conf/flask-reverse-proxy-fix.py "$final_path/youtube_dl_webui/flask-reverse-proxy-fix.py"
-sed -i '11i from .flask-reverse-proxy-fix import ReverseProxyPrefixFix' ${final_path}/youtube_dl_webui/server.py
+cp ../conf/flask_reverse_proxy_fix.py "$final_path/youtube_dl_webui/flask_reverse_proxy_fix.py"
+sed -i '11i from .flask_reverse_proxy_fix import ReverseProxyPrefixFix' ${final_path}/youtube_dl_webui/server.py
 sed -i "16i app.config['REVERSE_PROXY_PATH'] = '${path_url}'" ${final_path}/youtube_dl_webui/server.py
 sed -i "17i ReverseProxyPrefixFix(app)" ${final_path}/youtube_dl_webui/server.py
 ynh_replace_string --match_string="that.tasksData.headPath = window.location.protocol + '//' + window.location.host + '/';" --replace_string="that.tasksData.headPath = window.location.protocol + '//' + window.location.host + window.location.pathname;" --target_file="$final_path/youtube_dl_webui/static/js/global.js"
