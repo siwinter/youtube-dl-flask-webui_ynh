@@ -4,7 +4,7 @@ from flask import Flask as App
 # noinspection PyPackageRequirements
 try:
     from werkzeug.contrib.fixers import ProxyFix
-except ModuleNotFoundError:
+except ImportError:
     from werkzeug.middleware.proxy_fix import ProxyFix
 
 
