@@ -16,6 +16,7 @@ source /usr/share/yunohost/helpers
 
 ynh_clean_setup () {
 	#### Remove this function if there's nothing to clean before calling the remove script.
+	# Should we delete the videos that might have been restored?
 	true
 }
 # Exit if an error occurs during the execution of the script
@@ -31,8 +32,9 @@ app=$YNH_APP_INSTANCE_NAME
 domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
-db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-db_user=$db_name
+is_public=$(ynh_app_setting_get --app=$app --key=is_public)
+use_multimedia=$(ynh_app_setting_get --app=$app --key=use_multimedia)
+port=$(ynh_app_setting_get --app=$app --key=port)
 
 #=================================================
 # CHECK IF THE APP CAN BE RESTORED
@@ -85,6 +87,34 @@ ynh_systemd_action --action=restart --service_name=fail2ban
 
 #=================================================
 # SPECIFIC RESTORATION
+#=================================================
+
+# Check if the backed up port is still available
+new_port=$(ynh_find_port --port=$port)
+if [ $new_port -ne $port ]
+then
+	# Change port in configuration file
+	ynh_replace_string --match_string="$port" --replace_string="$new_port" --target_file="$final_path/config.json"
+fi
+
+# Restore videos
+ynh_restore_file --not_mandatory --origin_path="/home/yunohost.app/$app/videos"
+# Create folder where videos will be downloaded
+if [ ! -d "/home/yunohost.app/$app/videos" ]; then
+  mkdir -p /home/yunohost.app/$app/videos
+fi
+chown -R $app: /home/yunohost.app/$app
+chmod -R ugo+rw /home/yunohost.app/$app/videos
+
+if [ $use_multimedia -eq 1 ]
+then
+	# Make sure the yunohost.multimedia folders exist
+	ynh_multimedia_build_main_dir
+	
+	# Add the videos folder to the shared multimedia
+	ynh_multimedia_addfolder -s "/home/yunohost.app/$app/videos" -d "share/Video/youtube-dl-videos"
+fi
+
 #=================================================
 # REINSTALL DEPENDENCIES
 #=================================================
