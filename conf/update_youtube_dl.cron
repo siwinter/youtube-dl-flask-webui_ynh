@@ -1,8 +1,4 @@
-virtualenv --python=python3 "__FINAL_PATH__/venv"
-(
-	set +o nounset
-	source "__FINAL_PATH__/venv/bin/activate"
-	set -o nounset
-
-	pip install --upgrade youtube-dl
-)
+set +o nounset
+source "__FINAL_PATH__/venv/bin/activate"
+set -o nounset
+pip install --upgrade youtube-dl
