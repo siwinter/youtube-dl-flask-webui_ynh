@@ -7,8 +7,8 @@
         "fr": "Interface web pour Youtube-dl"
     },
     "version": "1.0~ynh1",
-    "url": "https://github.com/d0u9/youtube-dl-webui",
-    "license": " GPL-2.0-only",
+    "url": "https://github.com/roukydesbois/youtube-dl-webui_ynh",
+    "license": "GPL-2.0-only",
     "maintainer": {
         "name": "Thomas Blarre",
         "email": "thomas@blarre.net",
