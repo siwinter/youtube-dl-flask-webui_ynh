@@ -6,8 +6,8 @@
         "en": "Web interface for Youtube-dl",
         "fr": "Interface web pour Youtube-dl"
     },
-    "version": "1.0~ynh1",
-    "url": "https://github.com/roukydesbois/youtube-dl-webui_ynh",
+    "version": "0.2.2~ynh1",
+    "url": "https://github.com/d0u9/youtube-dl-webui",
     "license": "GPL-2.0-only",
     "maintainer": {
         "name": "Thomas Blarre",
