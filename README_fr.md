@@ -39,9 +39,11 @@ Il n'y a pas de documentation pour l'interface en elle-même. Cependant, à l'aj
 
 ## Limitations
 
-* Pas de limitation connue.
+* Pour l'instant les vidéos ne peuvent être supprimées que via l'interface, ou avec des droits root.
 
 ## Informations additionnelles
+
+Une tâche cron met à jour youtube-dl chaque nuit.
 
 ### A faire
 

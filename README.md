@@ -40,9 +40,11 @@ There is no documentation for the interface. Still, when you download a video, y
 
 ## Limitations
 
-* Any known limitations.
+* For now, videos cannot be deleted except from the application or with root privileges.
 
 ## Additional information
+
+A cron job updates youtube-dl every night.
 
 ### To do
 
