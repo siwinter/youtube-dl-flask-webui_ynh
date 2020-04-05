@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# s.w. Markierung
+
 from __future__ import unicode_literals
 from argparse import ArgumentParser
 
