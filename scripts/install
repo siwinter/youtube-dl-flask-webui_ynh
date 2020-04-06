@@ -262,7 +262,7 @@ ynh_script_progression --message="Configuring log rotation..." --time --weight=1
 ynh_use_logrotate
 
 #s.w. correct default owner root
-chown -r $app:$app /var/log/$app
+chown -R $app:$app /var/log/$app
 
 #=================================================
 # ADD A CRON JOB
