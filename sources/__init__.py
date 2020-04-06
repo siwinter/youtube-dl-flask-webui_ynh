@@ -26,7 +26,7 @@ def main(argv=None):
     print("pid is {}".format(getpid()))
     print("-----------------------------------")
 # s.w. begin 
-    logging.basicConfig(filename='/var/log/youtube-dl-webui/youtube-dl-webui.log',level=logging.DEBUG)
+    logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
     logger.debug('Debug-Nachricht')
     logger.info('Info-Nachricht')
     logger.warning('Warnhinweis')
