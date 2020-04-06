@@ -270,7 +270,7 @@ chown -R $app:$app /var/log/$app
 
 cron_path="/etc/cron.daily/$app"
 cp -a ../conf/update_youtube_dl.cron "$cron_path"
-root: "$cron_path"
+chown root: "$cron_path"
 chmod 644 "$cron_path"
 
 ynh_replace_string --match_string="__FINAL_PATH__" --replace_string="$final_path" --target_file="$cron_path"
