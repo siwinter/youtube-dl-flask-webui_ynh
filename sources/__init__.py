@@ -27,10 +27,10 @@ def main(argv=None):
     print("-----------------------------------")
 # s.w. begin 
     logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
-    logger.debug('Debug-Nachricht')
-    logger.info('Info-Nachricht')
-    logger.warning('Warnhinweis')
-    logger.error('Fehlermeldung')
+    logging.debug('Debug-Nachricht')
+    logging.info('Info-Nachricht')
+    logging.warning('Warnhinweis')
+    logging.error('Fehlermeldung')
 # s.w. end
     cmd_args = getopt(argv)
     core = Core(cmd_args=cmd_args)
