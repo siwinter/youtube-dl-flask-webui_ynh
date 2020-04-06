@@ -261,13 +261,16 @@ ynh_script_progression --message="Configuring log rotation..." --time --weight=1
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
 
+#s.w. correct default owner root
+chown -r $app:$app /var/log/$app
+
 #=================================================
 # ADD A CRON JOB
 #=================================================
 
 cron_path="/etc/cron.daily/$app"
 cp -a ../conf/update_youtube_dl.cron "$cron_path"
-chown root: "$cron_path"
+root: "$cron_path"
 chmod 644 "$cron_path"
 
 ynh_replace_string --match_string="__FINAL_PATH__" --replace_string="$final_path" --target_file="$cron_path"
