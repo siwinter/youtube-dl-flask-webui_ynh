@@ -108,12 +108,12 @@ class Worker(Process):
 
     def run(self):
         self.intercept_ydl_opts()
-        with YoutubeDL(self.ydl_opts) as ydl:
+        with YoutubeDL() as ydl:
             try:
                 if self.first_run:
                     info_dict = ydl.extract_info(self.url, download=False)
 
-                    self.logger.debug(json.dumps(info_dict, indent=4))
+#                    self.logger.debug(json.dumps(info_dict, indent=4))
 
                     info_dict['description'] = info_dict['description'].replace('\n', '<br />');
                     payload = {'tid': self.tid, 'data': info_dict}
@@ -126,6 +126,7 @@ class Worker(Process):
                 event_handler = FatalEvent(self.tid, self.msg_cli)
                 event_handler.invalid_url(self.url);
 
+        self.logger.info('download finished')
         self.msg_cli.put('worker_done', {'tid': self.tid, 'data': {}})
 
     def stop(self):
