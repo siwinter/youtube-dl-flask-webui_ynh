@@ -126,6 +126,7 @@ ynh_setup_source --dest_dir="$final_path"
 cp ../sources/logging.json "$final_path/youtube_dl_webui/logging.json"
 cp ../sources/__init__.py "$final_path/youtube_dl_webui/__init__.py"
 cp ../sources/worker.py "$final_path/youtube_dl_webui/worker.py"
+cp ../sources/core.py "$final_path/youtube_dl_webui/core.py"
 
 #=================================================
 # NGINX CONFIGURATION
