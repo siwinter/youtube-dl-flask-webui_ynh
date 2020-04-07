@@ -26,11 +26,20 @@ def main(argv=None):
     print("pid is {}".format(getpid()))
     print("-----------------------------------")
 # s.w. begin 
-    logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
-    logging.debug('Debug-Nachricht')
-    logging.info('Info-Nachricht')
-    logging.warning('Warnhinweis')
-    logging.error('Fehlermeldung')
+    logger = logging.getLogger('myLogger')
+    logger.setLevel(logging.DEBUG)
+
+    fh = logging.FileHandler('/var/log/youtube-dl-webui/my.log')
+    fh.setLevel(logging.DEBUG)
+
+    logger.addHandler(fh)
+
+    logger.debug('meine debug Ausgabe')
+#    logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
+#    logging.debug('Debug-Nachricht')
+#    logging.info('Info-Nachricht')
+#    logging.warning('Warnhinweis')
+#    logging.error('Fehlermeldung')
 # s.w. end
     cmd_args = getopt(argv)
     core = Core(cmd_args=cmd_args)
