@@ -13,7 +13,7 @@ from time import time
 
 class YdlHook(object):
     def __init__(self, tid, msg_cli):
-        self.logger = logging.getLogger('ydl_webui')
+        self.logger = logging.getLogger('myLogger')
         self.tid = tid
         self.msg_cli = msg_cli
 
@@ -52,7 +52,7 @@ class YdlHook(object):
 
 class LogFilter(object):
     def __init__(self, tid, msg_cli):
-        self.logger = logging.getLogger('ydl_webui')
+        self.logger = logging.getLogger('myLogger')
         self.tid = tid
         self.msg_cli = msg_cli
 
@@ -78,7 +78,7 @@ class LogFilter(object):
 
 class FatalEvent(object):
     def __init__(self, tid, msg_cli):
-        self.logger = logging.getLogger('ydl_webui')
+        self.logger = logging.getLogger('myLogger')
         self.tid = tid
         self.msg_cli = msg_cli
 
@@ -91,7 +91,7 @@ class FatalEvent(object):
 class Worker(Process):
     def __init__(self, tid, url, msg_cli, ydl_opts=None, first_run=False):
         super(Worker, self).__init__()
-        self.logger = logging.getLogger('ydl_webui')
+        self.logger = logging.getLogger('myLogger')
         self.tid = tid
         self.url = url
         self.msg_cli = msg_cli
