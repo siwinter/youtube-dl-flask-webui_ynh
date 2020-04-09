@@ -251,10 +251,13 @@ class TaskManager(object):
     def update_info(self, tid, info_dict):
         self.logger.debug('taskmgr update_info (%s)' %(tid))
         if tid not in self._tasks_dict:
+            self.logger.debug('taskmgr update_info TaskInexistenceError')
             raise TaskInexistenceError('task does not exist')
 
         task = self._tasks_dict[tid]
+        self.logger.debug('taskmgr update_info 1')
         task.update_info(info_dict)
+        self.logger.debug('taskmgr update_info 2')
 
         self._db.update_info(tid, info_dict)
         self.logger.debug('taskmgr update_info end')
