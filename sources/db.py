@@ -248,30 +248,31 @@ class DataBase(object):
 
     def update_info(self, tid, info_dict):
         self.logger.debug('db update_info()')
-        self.logger.debug('title: %s' %(info_dict['title']))
-        self.logger.debug('format: %s' %(info_dict['format']))
-        self.logger.debug('ext: %s' %(info_dict['ext']))
-        self.logger.debug('thumbnail: %s' %(info_dict['thumbnail']))
-        self.logger.debug('duration: %s' %(info_dict['duration']))
-        self.logger.debug('view_count: %s' %(info_dict['view_count']))
-        self.logger.debug('like_count: %s' %(info_dict['like_count']))
-        self.logger.debug('dislike_count: %s' %(info_dict['dislike_count']))
-        self.logger.debug('average_rating: %s' %(info_dict['average_rating']))
-        self.logger.debug('description: %s' %(info_dict['description']))
-        db_data =   {
-                        'valid':            1,      # info_dict is updated
-                        'title':            info_dict['title'],
-                        'format':           info_dict['format'],
-                        'ext':              info_dict['ext'],
-                        'thumbnail':        info_dict['thumbnail'],
-                        'duration':         info_dict['duration'],
-                        'view_count':       info_dict['view_count'],
-                        'like_count':       info_dict['like_count'],
-                        'dislike_count':    info_dict['dislike_count'],
-                        'average_rating':   info_dict['average_rating'],
-                        'description':      info_dict['description'],
-                    }
+        
+        db_data =   {'valid':            1}
+        if 'title' in info_dict :
+            db_data['title'] = info_dict['title']
+        if 'format' in info_dict :
+            db_data['format'] = info_dict['format']
+        if 'ext' in info_dict :
+            db_data['ext'] = info_dict['ext']
+        if 'thumbnail' in info_dict :
+            db_data['thumbnail'] = info_dict['thumbnail']
+        if 'duration' in info_dict :
+            db_data['duration'] = info_dict['duration']
+        if 'view_count' in info_dict :
+            db_data['view_count'] = info_dict['view_count']
+        if 'like_count' in info_dict :
+            db_data['like_count'] = info_dict['like_count']
+        if 'dislike_count' in info_dict :
+            db_data['dislike_count'] = info_dict['dislike_count']
+        if 'average_rating' in info_dict :
+            db_data['disaverage_ratinglike_count'] = info_dict['average_rating']
+        if 'description' in info_dict :
+            db_data['description'] = info_dict['description']
+            
         self.update(tid, {'task_info': db_data})
+        self.logger.debug('db update_info() end')
 
     def update_log(self, tid, log, exist_test=False):
         if exist_test:
