@@ -45,7 +45,7 @@ class WebMsgDispatcher(object):
     @classmethod
     def event_create(cls, svr, event, data, args):
         url, ydl_opts = data.get('url', None), data.get('ydl_opts', {})
-        cls.logger.debug('url = %s, ydl_opts = %s' %(url, ydl_opts))
+        cls.logger.debug('WebMsg create: url = %s, ydl_opts = %s' %(url, ydl_opts))
 
         if url is None:
             svr.put(cls.UrlErrorMsg)
@@ -74,7 +74,7 @@ class WebMsgDispatcher(object):
 
     @classmethod
     def event_manipulation(cls, svr, event, data, args):
-        cls.logger.debug('manipulation event')
+        cls.logger.debug('WebMsg manipulation event')
         tid, act = data['tid'], data['act']
 
         ret_val = cls.RequestErrorMsg
@@ -97,7 +97,7 @@ class WebMsgDispatcher(object):
 
     @classmethod
     def event_query(cls, svr, event, data, args):
-        cls.logger.debug('query event')
+        cls.logger.debug('WebMsg query event')
         tid, exerpt = data['tid'], data['exerpt']
 
         try:
@@ -109,6 +109,7 @@ class WebMsgDispatcher(object):
 
     @classmethod
     def event_list(cls, svr, event, data, args):
+        cls.logger.debug('WebMsg list event')
         exerpt, state = data['exerpt'], data['state']
 
         if state not in state_name:
@@ -119,11 +120,13 @@ class WebMsgDispatcher(object):
 
     @classmethod
     def event_state(cls, svr, event, data, args):
+        cls.logger.debug('WebMsg state event')
         c = cls._task_mgr.state()
         svr.put({'status': 'success', 'detail': c})
 
     @classmethod
     def event_config(cls, svr, event, data, arg):
+        cls.logger.debug('WebMsg config event')
         act = data['act']
 
         ret_val = cls.RequestErrorMsg
@@ -143,6 +146,7 @@ class WebMsgDispatcher(object):
 
     @classmethod
     def event_batch(cls, svr, event, data, arg):
+        cls.logger.debug('WebMsg batch event')
         act, detail = data['act'], data['detail']
 
         if 'tids' not in detail:
@@ -194,16 +198,19 @@ class WorkMsgDispatcher(object):
 
     @classmethod
     def event_info_dict(cls, svr, event, data, arg):
+        cls.logger.debug('WorkMsg info_dict event')
         tid, info_dict = data['tid'], data['data']
         cls._task_mgr.update_info(tid, info_dict)
 
     @classmethod
     def event_log(cls, svr, event, data, arg):
+        cls.logger.debug('WorkMsg log event')
         tid, log = data['tid'], data['data']
         cls._task_mgr.update_log(tid, log)
 
     @classmethod
     def event_fatal(cls, svr, event, data, arg):
+        cls.logger.debug('WorkMsg fatal event')
         tid, data = data['tid'], data['data']
 
         cls._task_mgr.update_log(tid, data)
@@ -212,6 +219,7 @@ class WorkMsgDispatcher(object):
 
     @classmethod
     def event_progress(cls, svr, event, data, arg):
+        cls.logger.debug('WorkMsg progress event')
         tid, data = data['tid'], data['data']
         try:
             cls._task_mgr.progress_update(tid, data)
@@ -220,6 +228,7 @@ class WorkMsgDispatcher(object):
 
     @classmethod
     def event_worker_done(cls, svr, event, data, arg):
+        cls.logger.debug('WorkMsg worker_done event')
         tid, data = data['tid'], data['data']
         try:
             cls._task_mgr.finish_task(tid)
@@ -228,7 +237,7 @@ class WorkMsgDispatcher(object):
 
 
 def load_conf_from_file(cmd_args):
-    logger = logging.getLogger('ydl_webui')
+    logger = logging.getLogger('myLogger')
 
     conf_file = cmd_args.get('config', None)
     logger.info('load config file (%s)' %(conf_file))
