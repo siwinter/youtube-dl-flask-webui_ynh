@@ -129,6 +129,7 @@ cp ../sources/worker.py "$final_path/youtube_dl_webui/worker.py"
 cp ../sources/core.py "$final_path/youtube_dl_webui/core.py"
 cp ../sources/task.py "$final_path/youtube_dl_webui/task.py"
 cp ../sources/msg.py "$final_path/youtube_dl_webui/msg.py"
+cp ../sources/db.py "$final_path/youtube_dl_webui/db.py"
 
 #=================================================
 # NGINX CONFIGURATION
