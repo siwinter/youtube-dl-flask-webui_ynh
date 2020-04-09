@@ -116,7 +116,7 @@ class TaskManager(object):
     ExerptKeys = ['tid', 'state', 'percent', 'total_bytes', 'title', 'eta', 'speed']
 
     def __init__(self, db, msg_cli, conf):
-        self.logger = logging.getLogger('ydl_webui')
+        self.logger = logging.getLogger('myLogger')
         self._db = db
         self._msg_cli = msg_cli
         self._conf = conf
