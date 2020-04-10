@@ -25,6 +25,8 @@ else:
 
 
 import youtube_dl_webui
+print("++++++++++++++++++++++ main. 3")
+print(__name__)
 
 if __name__ == '__main__':
     # Setup logger
