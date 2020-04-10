@@ -124,12 +124,14 @@ ynh_setup_source --dest_dir="$final_path"
 
 # s.w. ersetze einige Dateien durch eigene. Wenn alles fertig ist, sollten die Dateien durch Patches ersetzt werden
 cp ../sources/logging.json "$final_path/youtube_dl_webui/logging.json"
-cp ../sources/__init__.py "$final_path/youtube_dl_webui/__init__.py"
+# cp ../sources/__init__.py "$final_path/youtube_dl_webui/__init__.py"
 cp ../sources/worker.py "$final_path/youtube_dl_webui/worker.py"
 cp ../sources/core.py "$final_path/youtube_dl_webui/core.py"
 cp ../sources/task.py "$final_path/youtube_dl_webui/task.py"
 cp ../sources/msg.py "$final_path/youtube_dl_webui/msg.py"
 cp ../sources/db.py "$final_path/youtube_dl_webui/db.py"
+cp ../sources/__main__.py "$final_path/youtube_dl_webui/__main__.py"
+
 
 #=================================================
 # NGINX CONFIGURATION
