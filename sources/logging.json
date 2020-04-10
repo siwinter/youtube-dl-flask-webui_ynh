@@ -17,9 +17,9 @@
 
         "info_file_handler": {
             "class": "logging.handlers.RotatingFileHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "simple",
-            "filename": "info.log",
+            "filename": "/var/log/youtube-dl-webui/info.log",
             "maxBytes": 10485760,
             "backupCount": 20,
             "encoding": "utf8"
@@ -39,7 +39,7 @@
     "loggers": {
         "ydl_webui": {
             "level": "DEBUG",
-            "handlers": ["console"],
+            "handlers": ["info_file_handler"],
             "propagate": "no"
         }
     }
