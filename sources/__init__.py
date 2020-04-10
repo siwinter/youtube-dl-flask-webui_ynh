@@ -29,19 +29,24 @@ def main(argv=None):
     print("pid is {}".format(getpid()))
     print("-----------------------------------")
 # s.w. begin
-    print("++++++++++++++++++++++ init.main")
     path = os.path.realpath(os.path.abspath(__file__))
     dirname = os.path.dirname(path)
-    print(dirname)
-    logger = logging.getLogger('myLogger')
-    logger.setLevel(logging.DEBUG)
+    logging_json = os.path.join(dirname, 'logging.json')
+    try:
+        with open(logging_json) as f:
+            logging_conf = json.load(f)
+        logging.config.dictConfig(logging_conf)
+    except:
+        print("warning: no logging_conf loaded")
+    logger = logging.getLogger('ydl_webui')
+#    logger.setLevel(logging.DEBUG)
 
-    fh = logging.FileHandler('/var/log/youtube-dl-webui/my.log')
-    fh.setLevel(logging.DEBUG)
+#    fh = logging.FileHandler('/var/log/youtube-dl-webui/my.log')
+#    fh.setLevel(logging.DEBUG)
 
-    logger.addHandler(fh)
+#    logger.addHandler(fh)
 
-    logger.debug('meine debug Ausgabe')
+    logger.debug('start ydl_webui')
     logger.debug(dirname)
 #    logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
 #    logging.debug('Debug-Nachricht')
