@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import sys
 import os.path
 import json
+import logging
 import logging.config
 
 if __package__ is None and not hasattr(sys, 'frozen'):
@@ -21,10 +22,29 @@ import youtube_dl_webui
 
 if __name__ == '__main__':
     # Setup logger
-    logging_json = os.path.join(dirname, 'logging.json')
-    with open(logging_json) as f:
-        logging_conf = json.load(f)
-    logging.config.dictConfig(logging_conf)
+    # s.w. begin 
+    logger = logging.getLogger('myLogger')
+    logger.setLevel(logging.DEBUG)
 
-    youtube_dl_webui.main()
+    fh = logging.FileHandler('/var/log/youtube-dl-webui/my.log')
+    fh.setLevel(logging.DEBUG)
+
+    logger.addHandler(fh)
+
+    logger.debug('meine debug Ausgabe')
+#    logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
+    logging.debug('Debug-Nachricht')
+    logging.info('Info-Nachricht')
+    logging.warning('Warnhinweis')
+    logging.error('Fehlermeldung')
+# s.w. end
+    
+    logging_json = os.path.join(dirname, 'logging.json')
+#    logging.debug(dirname)
+    logging.debug(logging_json)
+#    with open(logging_json) as f:
+#        logging_conf = json.load(f)
+#    logging.config.dictConfig(logging_conf)
+
+#    youtube_dl_webui.main()
 
