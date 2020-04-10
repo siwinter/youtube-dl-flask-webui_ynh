@@ -33,9 +33,12 @@ def main(argv=None):
     dirname = os.path.dirname(path)
     logging_json = os.path.join(dirname, 'logging.json')
     try:
+        print("load logging config from")
+        print(logging_json)
         with open(logging_json) as f:
             logging_conf = json.load(f)
         logging.config.dictConfig(logging_conf)
+        print("logging config loaded")
     except:
         print("warning: no logging_conf loaded")
     logger = logging.getLogger('ydl_webui')
