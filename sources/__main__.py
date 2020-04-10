@@ -10,12 +10,18 @@ import logging
 import logging.config
 
 if __package__ is None and not hasattr(sys, 'frozen'):
+    print("++++++++++++++++++++++ main. 1")
     path = os.path.realpath(os.path.abspath(__file__))
     dirname = os.path.dirname(path)
+    print(dirname)
+    print(__name__)
     sys.path.insert(0, os.path.dirname(os.path.dirname(path)))
 else:
     path = os.path.realpath(os.path.abspath(__file__))
     dirname = os.path.dirname(path)
+    print("++++++++++++++++++++++ main. 2")
+    print(dirname)
+    print(__name__)
 
 
 import youtube_dl_webui
