@@ -8,6 +8,7 @@ from argparse import ArgumentParser
 
 from .core import Core
 # s.w. 
+import logging.config
 import logging
 import sys
 import os.path
@@ -38,10 +39,12 @@ def main(argv=None):
         print(logging_json)
         with open(logging_json) as f:
             logging_conf = json.load(f)
-        logging.config.dictConfig(logging_conf)
-        print("logging config loaded")
     except:
         print("warning: no logging_conf loaded")
+    
+    logging.config.dictConfig(logging_conf)
+    print("logging config loaded")
+
     logger = logging.getLogger('ydl_webui')
 #    logger.setLevel(logging.DEBUG)
 
@@ -53,10 +56,10 @@ def main(argv=None):
     logger.debug('start ydl_webui')
     logger.debug(dirname)
 #    logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
-#    logging.debug('Debug-Nachricht')
-#    logging.info('Info-Nachricht')
-#    logging.warning('Warnhinweis')
-#    logging.error('Fehlermeldung')
+    logging.debug('Debug-Nachricht')
+    logging.info('Info-Nachricht')
+    logging.warning('Warnhinweis')
+    logging.error('Fehlermeldung')
 # s.w. end
     cmd_args = getopt(argv)
     core = Core(cmd_args=cmd_args)
