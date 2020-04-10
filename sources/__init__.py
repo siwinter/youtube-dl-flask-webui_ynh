@@ -9,6 +9,9 @@ from argparse import ArgumentParser
 from .core import Core
 # s.w. 
 import logging
+import sys
+import os.path
+# s.w. end
 
 def getopt(argv):
     parser = ArgumentParser(description='Another webui for youtube-dl')
@@ -25,7 +28,8 @@ def main(argv=None):
 
     print("pid is {}".format(getpid()))
     print("-----------------------------------")
-# s.w. begin 
+# s.w. begin
+    print("++++++++++++++++++++++ init.main")
     logger = logging.getLogger('myLogger')
     logger.setLevel(logging.DEBUG)
 
