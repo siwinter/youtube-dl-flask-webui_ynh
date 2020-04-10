@@ -30,6 +30,9 @@ def main(argv=None):
     print("-----------------------------------")
 # s.w. begin
     print("++++++++++++++++++++++ init.main")
+    path = os.path.realpath(os.path.abspath(__file__))
+    dirname = os.path.dirname(path)
+    print(dirname)
     logger = logging.getLogger('myLogger')
     logger.setLevel(logging.DEBUG)
 
@@ -39,6 +42,7 @@ def main(argv=None):
     logger.addHandler(fh)
 
     logger.debug('meine debug Ausgabe')
+    logger.debug(dirname)
 #    logging.basicConfig(filename='/var/log/youtube-dl-webui/example.log',level=logging.DEBUG)
 #    logging.debug('Debug-Nachricht')
 #    logging.info('Info-Nachricht')
